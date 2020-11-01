@@ -36,6 +36,13 @@ public class IPLLeagueBowlers {
 		double average = Double.parseDouble(this.avg);
 		return average;
 	}
+	
+	public double StrikeRate() {
+ 		if (strikeRate.equals("-") || strikeRate == "")
+ 			this.strikeRate = "9999";
+ 		double sr = Double.parseDouble(this.strikeRate);
+ 		return sr;
+ 	}
 
 	@Override
 	public String toString() {

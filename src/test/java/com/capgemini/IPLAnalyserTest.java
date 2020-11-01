@@ -107,6 +107,15 @@ public class IPLAnalyserTest {
 		l2 = c1.sortBychoice(Choice.BOWL_AVG, bowlers);
 		Assert.assertEquals("11", l2.get(0).avg);
 	}
-	// this test case checks for top bowling average bowler
+ 	@Test
+ 	public void givenBowlingCSVfileReturnTopSRBowler() {
+ 		try {
+ 			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+ 		} catch (IPLLeagueAnalyserException e) {
+ 			e.printStackTrace();
+ 		}
+ 		l2 = c1.sortBychoice(Choice.BOWL_STRIKE_RATE, bowlers);
+ 		Assert.assertEquals("Alzarri Joseph", l2.get(0).player);
+ 	}
 
 }

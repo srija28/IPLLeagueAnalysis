@@ -8,7 +8,7 @@ public class SortByChoice<T> {
 
 	public enum Choice {
 		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG,
-		BOWL_AVG;
+		BOWL_AVG,  BOWL_STRIKE_RATE;
 	}
 
 	public Choice choice;
@@ -66,6 +66,10 @@ public class SortByChoice<T> {
 			Collections.sort(list3, Comparator.comparing(bowlers -> ((IPLLeagueBowlers) bowlers).Average()).reversed());
 			return (List<T>) list3;
 		}
+		case "BOWL_STRIKE_RATE": {
+ 			Collections.sort(list3, Comparator.comparing(bowlers -> ((IPLLeagueBowlers) bowlers).StrikeRate()));
+ 			return (List<T>) list3;
+ 		}
 		default: {
 			System.out.println("Wrong choice entered!");
 			return null;
