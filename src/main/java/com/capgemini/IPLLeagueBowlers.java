@@ -58,6 +58,12 @@ public class IPLLeagueBowlers {
  		int wkts = Integer.parseInt(fourWickets) + Integer.parseInt(fiveWickets);
  		return wkts;
  	}
+	public int Wickets() {
+ 		if (wickets.equals("-") || wickets == "")
+ 			wickets = "0";
+ 		int wkts = Integer.parseInt(wickets);
+ 		return wkts;
+ 	}
 
 	@Override
 	public String toString() {
