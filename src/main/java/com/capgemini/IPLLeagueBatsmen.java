@@ -76,6 +76,12 @@ public class IPLLeagueBatsmen {
 		return run;
 	}
 
+	public int Hundreds() {
+ 		if (hundreds.equals("-") || hundreds == "")
+ 			hundreds = "0";
+ 		int hundred = Integer.parseInt(hundreds);
+ 		return hundred;
+ 	}
 	@Override
 	public String toString() {
 		return "Batsman-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
