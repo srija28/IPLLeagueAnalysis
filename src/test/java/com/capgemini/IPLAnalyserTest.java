@@ -34,5 +34,16 @@ public class IPLAnalyserTest {
 		l1 = c1.sortBychoice(Choice.BAT_AVG, batsmen);
 		Assert.assertEquals("83.2", l1.get(0).avg);
 	}
+	
+	@Test
+ 	public void givenBattingCSVfileReturnTopStrikingRateBatsman() {
+ 		try {
+ 			batsmen = obj.readData(BATSMEN_CSV_FILE, "BATSMEN");
+ 		} catch (IPLLeagueAnalyserException e) {
+ 			e.printStackTrace();
+ 		}
+ 		l1 = c1.sortBychoice(Choice.STRIKE_RATE, batsmen);
+ 		Assert.assertEquals("333.33", l1.get(0).strikeRate);
+ 	}
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public class SortByChoice<T> {
 
 	public enum Choice {
-		BAT_AVG;
+		BAT_AVG, STRIKE_RATE;
 	}
 
 	public Choice choice;
@@ -22,6 +22,15 @@ public class SortByChoice<T> {
 			Collections.sort(list1, Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).Average()).reversed());
 			return (List<T>) list1;
 		}
+		case "STRIKE_RATE": {
+ 			for (IPLLeagueBatsmen b1 : list1) {
+ 				if (b1.strikeRate.equals("-"))
+ 					b1.strikeRate = "0";
+ 			}
+ 			Collections.sort(list1,
+ 					Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).StrikeRate()).reversed());
+ 			return (List<T>) list1;
+ 		}
 		default: {
 			System.out.println("Wrong choice entered!");
 			return null;
