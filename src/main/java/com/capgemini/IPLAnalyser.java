@@ -14,7 +14,7 @@ import com.capgemini.IPLLeagueAnalyserException.ExceptionType;
 public class IPLAnalyser<T> {
 
 	public static List<IPLLeagueBatsmen> batsmenList;
-	public List<IPLLeagueBowlers> bowlersList;
+	public static List<IPLLeagueBowlers> bowlersList;
 
 	public IPLAnalyser() {
 		batsmenList = null;

@@ -8,7 +8,8 @@ import java.util.List;
 public class SortByChoice<T> {
 
 	public enum Choice {
-		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG;
+		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG,
+		BOWL_AVG;
 	}
 
 	public Choice choice;
@@ -16,7 +17,16 @@ public class SortByChoice<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> sortBychoice(Choice choice, List<T> list) {
 		String choice1 = choice.toString();
-		List<IPLLeagueBatsmen> list1 = (List<IPLLeagueBatsmen>) list;
+		String type5 = list.get(0).getClass().toString();
+		List<IPLLeagueBatsmen> list1 = null;
+		List<IPLLeagueBowlers> list3 = null;
+		
+		if (type5.contains("IPLLeagueBatsmen")) {
+			list1 = (List<IPLLeagueBatsmen>) list;
+			
+		} else if (type5.contains("IPLLeagueBowlers")) {
+			list3 = (List<IPLLeagueBowlers>) list;
+		}
 		switch (choice1) {
 		case "BAT_AVG": {
 			Collections.sort(list1, Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).Average()).reversed());
@@ -54,6 +64,10 @@ public class SortByChoice<T> {
 					.thenComparing(IPLLeagueBatsmen::Average);
 			Collections.sort(list1, compareBy.reversed());
 			return (List<T>) list1;
+		}
+		case "BOWL_AVG": {
+			Collections.sort(list3, Comparator.comparing(bowlers -> ((IPLLeagueBowlers) bowlers).Average()));
+			return (List<T>) list3;
 		}
 		default: {
 			System.out.println("Wrong choice entered!");

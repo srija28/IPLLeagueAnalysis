@@ -97,5 +97,15 @@ public class IPLAnalyserTest {
  		l1 = c1.sortBychoice(Choice.MAX_RUNS_AND_BEST_AVG, batsmen);
  		Assert.assertEquals("David Warner ", l1.get(0).player);
  	}
-
+ 	@Test
+	public void givenBowlingCSVfileReturnTopAverageBowler() {
+		try {
+			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+		} catch (IPLLeagueAnalyserException e) {
+			e.printStackTrace();
+		}
+		l2 = c1.sortBychoice(Choice.BOWL_AVG, bowlers);
+		Assert.assertEquals("11", l2.get(0).average);
+	}
+	// this test case checks for top bowling average bowler
 }
