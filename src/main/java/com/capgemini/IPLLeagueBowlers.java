@@ -43,6 +43,13 @@ public class IPLLeagueBowlers {
  		double sr = Double.parseDouble(this.strikeRate);
  		return sr;
  	}
+	public double EconomyRate() {
+ 		if (economyRate.equals("-") || economyRate == "") {
+ 			this.economyRate = "9999";
+ 		}
+ 		double econ = Double.parseDouble(economyRate);
+ 		return econ;
+ 	}
 
 	@Override
 	public String toString() {
