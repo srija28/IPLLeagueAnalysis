@@ -105,7 +105,8 @@ public class IPLAnalyserTest {
 			e.printStackTrace();
 		}
 		l2 = c1.sortBychoice(Choice.BOWL_AVG, bowlers);
-		Assert.assertEquals("11", l2.get(0).average);
+		Assert.assertEquals("11", l2.get(0).avg);
 	}
 	// this test case checks for top bowling average bowler
+
 }

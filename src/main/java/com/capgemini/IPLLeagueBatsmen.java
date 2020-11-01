@@ -35,8 +35,8 @@ public class IPLLeagueBatsmen {
 	public double Average() {
 		if (avg.equals("-") || avg == "")
 			this.avg = "0";
-		double average = Double.parseDouble(this.avg);
-		return average;
+		double Average = Double.parseDouble(this.avg);
+		return Average;
 	}
 
 	public double StrikeRate() {

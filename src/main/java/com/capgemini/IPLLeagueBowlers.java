@@ -20,7 +20,7 @@ public class IPLLeagueBowlers {
 	@CsvBindByName(column = "BBI")
 	public String bestBowling;
 	@CsvBindByName(column = "Avg")
-	public String average;
+	public String avg;
 	@CsvBindByName(column = "Econ")
 	public String economyRate;
 	@CsvBindByName(column = "SR")
@@ -31,16 +31,16 @@ public class IPLLeagueBowlers {
 	public String fiveWickets;
 
 	public double Average() {
-		if (average.equals("-") || average == "")
-			this.average = "0";
-		double avg = Double.parseDouble(this.average);
-		return avg;
+		if (avg.equals("-") || avg == "")
+			this.avg = "9999";
+		double average = Double.parseDouble(this.avg);
+		return average;
 	}
 
 	@Override
 	public String toString() {
 		return "Bowlers-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings
-				+ " Overs: " + overs + " Runs: " + runs + " Wickets: " + wickets + " Average: " + average
+				+ " Overs: " + overs + " Runs: " + runs + " Wickets: " + wickets + " Average: " + avg
 				+ " Best Bowling in innings: " + bestBowling + " Strike Rate: " + strikeRate + " Economy rate: "
 				+ economyRate + " No. of 4 wicktes in an inning: " + fourWickets + " No. of 5 wickets in an inning:: "
 				+ fiveWickets;

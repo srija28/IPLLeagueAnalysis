@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-//this class performs the sort operation
 public class SortByChoice<T> {
 
 	public enum Choice {
@@ -20,10 +19,8 @@ public class SortByChoice<T> {
 		String type5 = list.get(0).getClass().toString();
 		List<IPLLeagueBatsmen> list1 = null;
 		List<IPLLeagueBowlers> list3 = null;
-		
 		if (type5.contains("IPLLeagueBatsmen")) {
 			list1 = (List<IPLLeagueBatsmen>) list;
-			
 		} else if (type5.contains("IPLLeagueBowlers")) {
 			list3 = (List<IPLLeagueBowlers>) list;
 		}
@@ -66,7 +63,7 @@ public class SortByChoice<T> {
 			return (List<T>) list1;
 		}
 		case "BOWL_AVG": {
-			Collections.sort(list3, Comparator.comparing(bowlers -> ((IPLLeagueBowlers) bowlers).Average()));
+			Collections.sort(list3, Comparator.comparing(bowlers -> ((IPLLeagueBowlers) bowlers).Average()).reversed());
 			return (List<T>) list3;
 		}
 		default: {
