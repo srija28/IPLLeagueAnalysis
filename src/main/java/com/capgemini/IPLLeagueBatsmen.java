@@ -39,37 +39,43 @@ public class IPLLeagueBatsmen {
 		return average;
 	}
 
-	
 	public double StrikeRate() {
- 		if (strikeRate.equals("-") || strikeRate == "")
- 			this.strikeRate = "0";
- 		double sr = Double.parseDouble(this.strikeRate);
- 		return sr;
- 	}
-	
-	public int noOfFours() {
- 		if (fours.equals("-") || fours == "")
- 			fours = "0";
- 		int four = Integer.parseInt(fours);
- 		return four;
- 	}
+		if (strikeRate.equals("-") || strikeRate == "")
+			this.strikeRate = "0";
+		double sr = Double.parseDouble(this.strikeRate);
+		return sr;
+	}
 
- 	public int noOfSixes() {
- 		if (sixes.equals("-") || sixes == "")
- 			sixes = "0";
- 		int six = Integer.parseInt(sixes);
- 		return six;
- 	}
- 	
+	public int noOfFours() {
+		if (fours.equals("-") || fours == "")
+			fours = "0";
+		int four = Integer.parseInt(fours);
+		return four;
+	}
+
+	public int noOfSixes() {
+		if (sixes.equals("-") || sixes == "")
+			sixes = "0";
+		int six = Integer.parseInt(sixes);
+		return six;
+	}
+
 	public int noOfBoundaries() {
- 		if (sixes.equals("-") || sixes == "")
- 			sixes = "0";
- 		if (fours.equals("-") || fours == "")
- 			fours = "0";
- 		int boundaries = Integer.parseInt(sixes) + Integer.parseInt(fours);
- 		return boundaries;
- 	}
-	
+		if (sixes.equals("-") || sixes == "")
+			sixes = "0";
+		if (fours.equals("-") || fours == "")
+			fours = "0";
+		int boundaries = Integer.parseInt(sixes) + Integer.parseInt(fours);
+		return boundaries;
+	}
+
+	public int Runs() {
+		if (runs.equals("-") || runs == "")
+			runs = "0";
+		int run = Integer.parseInt(runs);
+		return run;
+	}
+
 	@Override
 	public String toString() {
 		return "Batsman-- \nPosition: " + pos + " Player :" + player + " Matches: " + matches + " Innings: " + innings

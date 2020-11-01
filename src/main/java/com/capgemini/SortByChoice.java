@@ -8,7 +8,7 @@ import java.util.List;
 public class SortByChoice<T> {
 
 	public enum Choice {
-		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR;
+		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG;
 	}
 
 	public Choice choice;
@@ -28,27 +28,33 @@ public class SortByChoice<T> {
 			return (List<T>) list1;
 		}
 		case "MAX_FOURS": {
- 			Collections.sort(list1,
- 					Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).noOfFours()).reversed());
- 			return (List<T>) list1;
- 		}
- 		case "MAX_SIXES": {
- 			Collections.sort(list1,
- 					Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).noOfSixes()).reversed());
- 			return (List<T>) list1;
- 		}
- 		case "MAX_BOUNDARIES_AND_SR": {
- 			Comparator<IPLLeagueBatsmen> compareBy = Comparator.comparing(IPLLeagueBatsmen::StrikeRate)
- 					.thenComparing(IPLLeagueBatsmen::noOfBoundaries);
- 			Collections.sort(list1, compareBy.reversed());
- 			return (List<T>) list1;
- 		}
- 		case "MAX_AVG_AND_SR": {
- 			Comparator<IPLLeagueBatsmen> compareBy = Comparator.comparing(IPLLeagueBatsmen::Average)
- 					.thenComparing(IPLLeagueBatsmen::StrikeRate);
- 			Collections.sort(list1, compareBy.reversed());
- 			return (List<T>) list1;
- 		}
+			Collections.sort(list1,
+					Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).noOfFours()).reversed());
+			return (List<T>) list1;
+		}
+		case "MAX_SIXES": {
+			Collections.sort(list1,
+					Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).noOfSixes()).reversed());
+			return (List<T>) list1;
+		}
+		case "MAX_BOUNDARIES_AND_SR": {
+			Comparator<IPLLeagueBatsmen> compareBy = Comparator.comparing(IPLLeagueBatsmen::StrikeRate)
+					.thenComparing(IPLLeagueBatsmen::noOfBoundaries);
+			Collections.sort(list1, compareBy.reversed());
+			return (List<T>) list1;
+		}
+		case "MAX_AVG_AND_SR": {
+			Comparator<IPLLeagueBatsmen> compareBy = Comparator.comparing(IPLLeagueBatsmen::Average)
+					.thenComparing(IPLLeagueBatsmen::StrikeRate);
+			Collections.sort(list1, compareBy.reversed());
+			return (List<T>) list1;
+		}
+		case "MAX_RUNS_AND_BEST_AVG": {
+			Comparator<IPLLeagueBatsmen> compareBy = Comparator.comparing(IPLLeagueBatsmen::Runs)
+					.thenComparing(IPLLeagueBatsmen::Average);
+			Collections.sort(list1, compareBy.reversed());
+			return (List<T>) list1;
+		}
 		default: {
 			System.out.println("Wrong choice entered!");
 			return null;
