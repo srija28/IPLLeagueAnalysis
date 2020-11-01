@@ -1,5 +1,5 @@
 package com.capgemini;
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -8,7 +8,8 @@ public class SortByChoice<T> {
 
 	public enum Choice {
 		BAT_AVG, STRIKE_RATE, MAX_FOURS, MAX_SIXES, MAX_BOUNDARIES_AND_SR, MAX_AVG_AND_SR, MAX_RUNS_AND_BEST_AVG,
-		BOWL_AVG,  BOWL_STRIKE_RATE, BOWL_ECON, BEST_SR_AND_WKTS, BEST_SR_AND_AVG_BOWL, MAX_WKTS_AND_BEST_AVG;
+		BOWL_AVG, BOWL_STRIKE_RATE, BOWL_ECON, BEST_SR_AND_WKTS, BEST_SR_AND_AVG_BOWL, MAX_WKTS_AND_BEST_AVG,
+ 		MAX_BAT_AND_BOWL_AVG;
 	}
 
 	public Choice choice;
@@ -19,11 +20,14 @@ public class SortByChoice<T> {
 		String type5 = list.get(0).getClass().toString();
 		List<IPLLeagueBatsmen> list1 = null;
 		List<IPLLeagueBowlers> list3 = null;
+		List<IPLLeagueAllRounder> list2 = null;
 		if (type5.contains("IPLLeagueBatsmen")) {
 			list1 = (List<IPLLeagueBatsmen>) list;
 		} else if (type5.contains("IPLLeagueBowlers")) {
 			list3 = (List<IPLLeagueBowlers>) list;
-		}
+		}else if (type5.contains("IPLLeagueAllRounder")) {
+ 			list2 = (List<IPLLeagueAllRounder>) list;
+ 		}
 		switch (choice1) {
 		case "BAT_AVG": {
 			Collections.sort(list1, Comparator.comparing(batsmen -> ((IPLLeagueBatsmen) batsmen).Average()).reversed());
@@ -89,11 +93,29 @@ public class SortByChoice<T> {
  			Collections.sort(list3, compareBy.reversed());
  			return (List<T>) list3;
  		}
+		case "MAX_BAT_AND_BOWL_AVG": {
+ 			Comparator<IPLLeagueAllRounder> compareBy = Comparator.comparing(IPLLeagueAllRounder::AverageWickets)
+ 					.thenComparing(IPLLeagueAllRounder::AverageRuns).reversed();
+ 			Collections.sort(list2, compareBy);
+ 			return (List<T>) list2;
+ 		}
 		default: {
 			System.out.println("Wrong choice entered!");
 			return null;
 		}
 		}
 	}
+	public List<IPLLeagueAllRounder> getAllRounderPlayers(List<IPLLeagueBatsmen> batsmenList,
+ 			List<IPLLeagueBowlers> bowlersList) {
+ 		List<IPLLeagueAllRounder> allRounderList = new ArrayList<>();
+ 		for (IPLLeagueBatsmen b1 : batsmenList) {
+ 			IPLLeagueBowlers bowlers = bowlersList.stream().filter(bowler -> bowler.player.equalsIgnoreCase(b1.player))
+ 					.findFirst().orElse(null);
+ 			if (bowlers != null) {
+ 				allRounderList.add(new IPLLeagueAllRounder(b1.player, b1.runs, bowlers.wickets, b1.avg, bowlers.avg));
+ 			}
+ 		}
+ 		return allRounderList;
+ 	}
 
 }
