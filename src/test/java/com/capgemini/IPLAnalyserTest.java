@@ -138,5 +138,15 @@ public class IPLAnalyserTest {
  		l2 = c1.sortBychoice(Choice.BEST_SR_AND_WKTS, bowlers);
  		Assert.assertEquals("Alzarri Joseph", l2.get(0).player);
  	}
+ 	@Test
+ 	public void givenBowlingCSVfileReturnTopStrikeRateBowlerWithBestAverage() {
+ 		try {
+ 			bowlers = obj.readData(BOWLERS_CSV_FILE, "BOWLERS");
+ 		} catch (IPLLeagueAnalyserException e) {
+ 			e.printStackTrace();
+ 		}
+ 		l2 = c1.sortBychoice(Choice.BEST_SR_AND_AVG_BOWL, bowlers);
+ 		Assert.assertEquals("Anukul Roy", l2.get(0).player);
+ 	}
 
 }
